@@ -1,0 +1,13 @@
+﻿@model DoctorManagementMvc.Models.Doctor
+@{
+    ViewData["Title"] = "Delete Doctor";
+}
+<h2>Delete Doctor</h2>
+<div class="alert alert-warning">
+    Are you sure you want to delete <strong>@Model.Name</strong> (@Model.Code)?
+</div>
+
+<form asp-action="Delete" method="post" asp-route-id="@Model.Code">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>

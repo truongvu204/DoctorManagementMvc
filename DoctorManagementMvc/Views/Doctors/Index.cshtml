@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DoctorManagementMvc.Models.Doctor>
+@{
+    ViewData["Title"] = "Doctor Management";
+}
+<h2>Doctor management</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">@TempData["msg"]</div>
+}
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="input-group">
+        <input name="q" class="form-control" placeholder="Search name or specialization"
+               value="@(ViewBag.Query as string)" />
+        <button class="btn btn-primary" type="submit">Search</button>
+        <a class="btn btn-secondary" asp-action="Index">Clear</a>
+        <a class="btn btn-success" asp-action="Create">Add Doctor</a>
+    </div>
+</form>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Availability</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Code</td>
+                <td>@d.Name</td>
+                <td>@d.Specialization</td>
+                <td>@d.Availability</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@d.Code">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@d.Code">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
