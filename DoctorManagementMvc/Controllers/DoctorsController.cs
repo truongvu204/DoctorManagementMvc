@@ -84,5 +84,16 @@ namespace DoctorManagementMvc.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult ShowPatients(string id)
+        {
+            var doctor = _repo.GetByCode(id);
+            if (doctor == null)
+            {
+                TempData["msg"] = "Doctor not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(doctor); // truyền toàn bộ doctor (bao gồm danh sách Patients)
+        }
     }
 }

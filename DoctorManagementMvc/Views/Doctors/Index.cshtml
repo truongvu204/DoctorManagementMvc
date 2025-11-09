@@ -38,10 +38,12 @@
                 <td>@d.Specialization</td>
                 <td>@d.Availability</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@d.Code">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@d.Code">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@d.Code" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@d.Code" class="btn btn-sm btn-danger">Delete</a>
+                    <a asp-action="ShowPatients" asp-route-id="@d.Code" class="btn btn-sm btn-primary">Show Patients</a>
                 </td>
             </tr>
         }
+
     </tbody>
 </table>

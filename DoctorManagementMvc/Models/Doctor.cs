@@ -15,5 +15,6 @@ namespace DoctorManagementMvc.Models
 
         [Range(0, int.MaxValue)]
         public int Availability { get; set; }
+        public List<Patient> Patients { get; set; } = new();
     }
 }

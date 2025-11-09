@@ -1,0 +1,38 @@
+﻿@model DoctorManagementMvc.Models.Doctor
+
+@{
+    ViewData["Title"] = "Patient List";
+}
+
+<h2>Danh sách bệnh nhân của bác sĩ: @Model.Name (@Model.Specialization)</h2>
+
+@if (Model.Patients == null || !Model.Patients.Any())
+{
+    <p><em>Không có bệnh nhân nào được ghi nhận cho bác sĩ này.</em></p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã bệnh nhân</th>
+                <th>Tên</th>
+                <th>Tuổi</th>
+                <th>Bệnh lý</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Patients)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Age</td>
+                    <td>@p.Disease</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-secondary mt-3">⬅ Quay lại danh sách bác sĩ</a>
